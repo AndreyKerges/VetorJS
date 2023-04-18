@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <script src="components/loader.js"></script>
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+      var nomes = []
+      var nomeinserido 
+
+      function pushvetor() {
+        nomeinserido = document.getElementById('insertnome').value
+
+        nomes.push(nomeinserido)
+
+        alert(nomes)
+      } 
+  
+      function unshiftvetor() {
+        nomeinserido = document.getElementById('insertnome').value
+
+        nomes.unshift(nomeinserido)
+        alert(nomes)
+      }
+
+      function popvetor() {
+        nomes.pop()
+        alert(nomes)
+      }
+
+      function shiftvetor() {
+        nomes.shift()
+        alert(nomes)
+      }
+
+      function listarNomes() {
+    let lista = document.getElementById("listaNomes");
+    lista.innerHTML = "";
+    for (let i = 0; i < nomes.length; i++) {
+      let itemLista = document.createElement("li");
+      itemLista.innerText = `${i+0} - ${nomes[i]}`;
+      lista.appendChild(itemLista);
+    }
+  }
+
+
+function procurarNumero() {
+  const numeroBuscado = parseInt(document.getElementById('buscarNumero').value);
+  const nomeEncontrado = nomes[numeroBuscado];
+  if (nomeEncontrado) {
+    const resultado = document.createElement("p");
+    resultado.innerText = `${numeroBuscado} - ${nomeEncontrado}`;
+    const container = document.querySelector(".container");
+    container.appendChild(resultado);
+  } else {
+    alert(`Não há nada salvo na posição ${numeroBuscado} do vetor.`);
+  }
+}
+
+
+
+
+    </script>
+</head>
+<body>
+
+<div class ="container">
+  <input type="text" placeholder="Insira o nome " id= "insertnome">
+  <input type="button" value="CADASTRAR" onclick="pushvetor()">
+  <input type="button" value="CADASTRAR NO INICIO" onclick="unshiftvetor()">
+  <input type="button" value="REMOVER" onclick="popvetor()">
+  <input type="button" value="REMOVER DO INICIO" onclick="shiftvetor()">
+
+
+
+<input type="button" value="LISTAR" onclick="listarNomes()"
+    <br><br>
+    <ul id="listaNomes"></ul>
+
+      <input type="text" placeholder="Buscar ID" id="buscarNumero">
+      <input type="button" value="PROCURAR" onclick="procurarNumero()">
+      <input type="button" value="REINICIAR" onclick="location.reload()">
+</div>
+
+
+</body>
+</html>
